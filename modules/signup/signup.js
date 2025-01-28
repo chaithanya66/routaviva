@@ -1,5 +1,5 @@
+import {post} from "../../api/http-client.js";
 
-import httpClient from './http-client.js';
 const form = document.querySelector('#form');
 const username = document.querySelector('#name-input');
 const email = document.querySelector('#email-input');
@@ -124,12 +124,12 @@ export async function registerUser() {
     const button = document.getElementById('button-input');
     button.classList.add('loading');
     button.disabled = true;
-
     try {
-        const response = await httpClient.post("https://rutavivaunsecured.onrender.com/register", body);
-        if (response.status === 200) {
+        const response = await post("https://rutavivaunsecured.onrender.com/register", body);
+        console.log("Response is ", response)
+        if (response.code === 200) {
             console.log("Registration successful:", response);
-            window.location.href = "index.html";
+            window.location.href = "www.google.com";
         } else {
             console.error(`Error: ${response.status} - ${response.statusText}`);
             alert("Registration failed. Please check your inputs or try again later.");
