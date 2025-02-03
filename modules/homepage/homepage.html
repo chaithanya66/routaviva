@@ -4,8 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="homepage.css">
 </head>
 <body>
-    <h1>This is Home Page</h1>
+    <nav class="navbar">
+        <ul>
+            <li><a href="">logo</a></li>
+            <span>
+                <li><a href="">Dashboard</a></li>
+                <li><a href="">YourTrips</a></li>              
+            </span>
+            <li class="hoverit"><img src="../../assets/images/icons8-setting-50.png">
+                <ul class="dropdown">
+                    <li><a href="../signin/signin.html">Sign in</a></li>
+                    <li><a href="../signup/signup.html">Sign up</a></li>
+                    <li><a href="../signin/signin.html">Log Out</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <h3 id="displaytext">You have not yet created any Trip</h3>
+        <a href=""><img src="../../assets/images/icons8-arrow-64.png" alt="Select Trips"></a>
+    </main>
 </body>
 </html>

@@ -6,27 +6,14 @@ const email = document.querySelector('#email-input');
 const password = document.querySelector('#password-input');
 const cpassword = document.querySelector('#c-password-input');
 
-
-/*form.addEventListener('submit',async (e) => {
-    document.getElementById('button-input')
-    const button = this;
-    button.classList.add('loading');
-    button.disabled = true;
-    e.preventDefault();
-    // validateInputs();
-    await registerUser();
-});
-*/
-
 function validateInputs() {
     const usernameval = username.value.trim();
     const emailval = email.value.trim();
     const passwordval = password.value.trim();
     const cpasswordval = cpassword.value.trim();
 
-
     if (usernameval === '') {
-        setError(username, );
+        setError(username, 'User name is required');
     } else {
         setSuccess(username);
     }
@@ -41,7 +28,8 @@ function validateInputs() {
         setError(password, 'Password is required');
     } else if (passwordval.length < 8) {
         setError(password, 'Password must be at least 8 characters');
-    } else {
+    }
+     else {
         setSuccess(password);
     }
     if (cpasswordval === '') {
@@ -112,7 +100,6 @@ export async function registerUser() {
         alert("All fields are required.");
         return;
     }
-
     const body = {
         email: emailValue,
         password: passwordValue,
@@ -129,7 +116,7 @@ export async function registerUser() {
         console.log("Response is ", response)
         if (response.code === 200) {
             console.log("Registration successful:", response);
-            window.location.href = "www.google.com";
+            window.location.href = '../homepage/homepage.html';
         } else {
             console.error(`Error: ${response.status} - ${response.statusText}`);
             alert("Registration failed. Please check your inputs or try again later.");

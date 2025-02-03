@@ -83,6 +83,7 @@ body{
     padding: 10px 155px;
     border-radius: 5px;
     color: white;
+    margin-top: 20px;
     background-color: rgb(119, 156, 249);
     font-size: 16px;
     border: rgb(119, 156, 249);
@@ -130,7 +131,7 @@ body{
 }
 .box1{
     margin-top: 40px;
-    height: 790px;
+    height: 990px;
     width: 910px;
     border: 5px solid rgb(180, 217, 254);
     margin-left: 50px;
@@ -140,7 +141,7 @@ body{
 }
 .box2{
     margin: 70px;
-    height: 700px;
+    height: 900px;
     width: 820px;
     border: 5px solid rgb(180, 217, 254);
     margin-left: 100px; 
@@ -149,7 +150,7 @@ body{
 }
 .box3{
     margin-top: 80px;
-    height: 600px;
+    height: 800px;
     width: 750px;
     border: 5px solid rgb(180, 217, 254);
     margin-left: 80px;   
