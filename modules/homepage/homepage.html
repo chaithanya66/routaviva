@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="homepage.css">
 </head>
-<body>
+<body id="body">
     <nav class="navbar">
         <ul>
             <li><a href="">logo</a></li>
@@ -16,16 +16,63 @@
             </span>
             <li class="hoverit"><img src="../../assets/images/icons8-setting-50.png">
                 <ul class="dropdown">
-                    <li><a href="../signin/signin.html">Sign in</a></li>
-                    <li><a href="../signup/signup.html">Sign up</a></li>
+                    <!--  <li><a href="../signin/signin.html">Sign in</a></li>
+                    <li><a href="../signup/signup.html">Sign up</a></li>  -->
                     <li><a href="../signin/signin.html">Log Out</a></li>
                 </ul>
             </li>
         </ul>
     </nav>
-    <main>
+    <div id="popup" class="popup">
+        <div class="flexitt">
+            <button id="toggleit">&times;</button>
+        </div>
+        
+        <div id="inputs">
+            <p id="textchange-">Enter how many are travelling:</p>
+            <div class="flexit">
+                <input type="text" placeholder="Enter the no.of colleagues" id="noofmail">
+                <button id="addanotheremail">Enter</button>
+                <button id="emailsendingbutt">submit</button>
+            </div>
+        </div>
+    </div>
+    <main id="maintag">
+
         <h3 id="displaytext">You have not yet created any Trip</h3>
-        <a href=""><img src="../../assets/images/icons8-arrow-64.png" alt="Select Trips"></a>
+
+
+        <div class="cont">
+            <div class="container">
+
+                <div class="input-fields">
+                    <input type="text" name="" placeholder="Enter the Destination" class="input-1" id="input-10">
+                </div>
+    
+                <div class="input-fields">
+                    <input type="date" placeholder="when" class="input-2" id="input-11">
+                    <input type="date" placeholder="when" class="input-3" id="input-12">
+                </div>
+                <button onclick="checkit()" id="button">Submit</button>
+            </div>
+        </div><br>
+
+
+        <!-- <a href=""><img src="../../assets/images/icons8-arrow-64.png" alt="Select Trips"></a> --> 
+
+        <div class="count-2" >
+            <div class="container-2">
+                <div class="input-name">
+                    <input type="text" placeholder="Who will be on the trip" name="" id="name-field">
+                </div>
+                <button id="button-2">Submit</button>
+            </div>
+        </div>
+
+
     </main>
+
+
+    <script src="homepage.js"></script>
 </body>
 </html>

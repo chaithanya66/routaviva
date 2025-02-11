@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Input Fields</title>
+</head>
+<body>
+    <div id="input-container">
+        <button onclick="addInputField()">Add Input Field</button>
+    </div>
+
+    <script>
+        function addInputField() {
+            for(i=0;i<3;i++){
+                // Create a new input element
+            const input = document.createElement('input');
+            input.type = 'email';
+            input.name = 'dynamicInput';
+            input.placeholder = 'Enter mail';
+
+            // Append the new input element to the container
+            document.getElementById('input-container').appendChild(input);
+            }
+            const inputfield=document.createElement('input');
+            inputfield.type='email';
+            inputfield.name='dynamicInput';
+            inputfield.placeholder='email';
+            document.getElementById('input-container').appendChild(inputfield);
+        }
+    </script>
+</body>
+</html>
