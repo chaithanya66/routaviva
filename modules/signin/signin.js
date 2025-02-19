@@ -99,9 +99,8 @@ export async function registerUser() {
             console.log("Registration successful:", response);
             window.location.href = '../homepage/homepage.html';
         }
-        else if(response.code===400){
-            const disp=document.getElementsByClassName("error");
-            disp.textContent="password is incorrect";
+        else if(response && response.code === 400){
+            document.getElementById("textcontenterror").textContent='Password is incorrect';
         }
          else {
             console.error(`Error: ${response.status} - ${response.statusText}`);

@@ -28,43 +28,26 @@ function checkit() {
             popup.classList.toggle('active'); // Toggle the active class on the popup
             maintag.style.display="none";
             document.getElementById("body").style.backgroundColor="grey";
-        });
-        document.getElementById("toggleit").addEventListener('click',function(){
-            const popup=document.getElementById("popup");
-            popup.classList.remove('active');
-            maintag.style.display="block";
-            document.getElementById("body").style.backgroundColor="white";
-        });
-    
-}
-const buttontag=document.getElementById("addanotheremail");
-        buttontag.addEventListener('click',function(){
-            const numberof=document.getElementById("noofmail").value;
-            const storeemail=[];
-            for(i=0;i<numberof;i++){
-                const input=document.createElement('input');
-                input.type='email';
-                input.name='emailEle';
-                input.placeholder='Enter email';
-                input.style.backgroundColor='#085f57';
-                input.style.border='none';
-                input.style.outline='none';
-                input.style.marginTop='20px';
-                document.getElementById("inputs").appendChild(input);
-                storeemail.push(input);
-                
-            }
-            document.getElementById("textchange-").textContent="Enter the mail id's";
-            document.getElementById("emailsendingbutt").style.display='block';
-            document.getElementById("addanotheremail").style.display='none';
+    });
+    const submitbutton=document.getElementById("button-01");
+        const show=document.getElementById("textfeild");
+        const mailinput=document.getElementById("mailid-01");
 
-            document.getElementById("emailsendingbutt").addEventListener('click',function(){
-                storeemail.forEach(storeEmails=>{
-                    console.log(storeEmails.value);
-                });
-                const popup=document.getElementById("popup");
-                popup.classList.remove('active');
-                maintag.style.display="block";
-                document.getElementById("body").style.backgroundColor="white";
-            });
-        });
+        submitbutton.addEventListener('click',function(){
+            const inputs=mailinput.value;
+            const newtext=document.createElement("div");
+            newtext.textContent=inputs;
+            newtext.style.color="white";
+            show.appendChild(newtext);
+            console.log(inputs);
+            newtext.style.marginBottom="20px";
+            mailinput.value="";
+    });
+    const closetag=document.getElementById("toggleit");
+    closetag.addEventListener('click',function(){
+        const popup = document.getElementById("popup");
+        popup.style.display="none";
+        maintag.style.display="block";
+        document.getElementById("body").style.backgroundColor="white";
+    });
+}

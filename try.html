@@ -3,31 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Input Fields</title>
+    <title>Document</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+HR+Lijeva:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+        .container10{
+            font-family: "Open Sans", serif;
+            height: auto;
+            width:300px;
+            margin: 20vh auto;
+            display: flex;
+            background-color: #564e4e;
+            text-align: center;
+            box-shadow: 5px 5px 10px #000000;
+            padding: 20px;
+        }
+        .inputs{
+            text-align: center;
+            margin: 10vh auto;
+        }
+        #mailid{
+            outline: none;
+            padding: 8px 20px;
+            border-radius: 10px;
+            border: 1px solid #564e4e;
+            box-shadow: 5px 5px 10px #000000;
+        }
+        #button{
+            padding: 7px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            cursor: pointer;
+            border: 2px solid #000000;
+            background: none;
+            mix-blend-mode: lighten;
+        }
+        #closetag{
+            background:none;
+            border-radius: 30px;
+            font-size: 25px;
+            height: 30px;
+            width: 30px;
+            border: 1px solid #000000;
+        }
+    </style>
 </head>
 <body>
-    <div id="input-container">
-        <button onclick="addInputField()">Add Input Field</button>
+    <div class="container10">
+        <button id="closetag">&times;</button>
+        <div class="inputs">
+            <div id="textfeild"></div>
+            <input type="mail" name="" id="mailid"><br>
+            <button id="button"><img src="assets/images/addbut.png" alt=""></button>
+        </div>
     </div>
-
+    
     <script>
-        function addInputField() {
-            for(i=0;i<3;i++){
-                // Create a new input element
-            const input = document.createElement('input');
-            input.type = 'email';
-            input.name = 'dynamicInput';
-            input.placeholder = 'Enter mail';
+        const submitbutton=document.getElementById("button");
+        const show=document.getElementById("textfeild");
+        const mailinput=document.getElementById("mailid");
 
-            // Append the new input element to the container
-            document.getElementById('input-container').appendChild(input);
-            }
-            const inputfield=document.createElement('input');
-            inputfield.type='email';
-            inputfield.name='dynamicInput';
-            inputfield.placeholder='email';
-            document.getElementById('input-container').appendChild(inputfield);
-        }
+        submitbutton.addEventListener('click',function(){
+            const inputs=mailinput.value;
+            const newtext=document.createElement("div");
+            newtext.textContent=inputs;
+            newtext.style.color="white";
+            show.appendChild(newtext);
+            console.log(inputs);
+            newtext.style.marginBottom="20px";
+            mailinput.value="";
+        });
     </script>
+    
 </body>
 </html>
