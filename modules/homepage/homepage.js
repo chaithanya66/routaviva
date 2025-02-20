@@ -17,22 +17,19 @@ function checkit() {
     }
     if (textfeild.value !== "" && datefeild_1.value !== "" && datefeild_2.value !== "") {
         document.getElementById("button").style.display = "none";
-        document.getElementsByClassName("count-2")[0].style.display = "inline-block";
+        document.getElementsByClassName("cont-2")[0].style.display = "inline-block";
     }
-    const maintag=document.getElementById("maintag");
-    const button_2 = document.getElementById("button-2");
-        button_2.addEventListener('click', function() {
-            const namefield=document.getElementById("name-field").value;
-            console.log(namefield);
-            const popup = document.getElementById("popup");
-            popup.classList.toggle('active'); // Toggle the active class on the popup
-            maintag.style.display="none";
-            document.getElementById("body").style.backgroundColor="grey";
-    });
-    const submitbutton=document.getElementById("button-01");
+}
+
+document.getElementById("showpopup").addEventListener('click',function(){
+    document.getElementById("popup").style.display="block";
+    document.getElementById("maintag").style.display="none";
+});
+
+const submitbutton=document.getElementById("button-01");
         const show=document.getElementById("textfeild");
         const mailinput=document.getElementById("mailid-01");
-
+        let count=0;
         submitbutton.addEventListener('click',function(){
             const inputs=mailinput.value;
             const newtext=document.createElement("div");
@@ -41,8 +38,12 @@ function checkit() {
             show.appendChild(newtext);
             console.log(inputs);
             newtext.style.marginBottom="20px";
+            newtext.style.fontSize="15px";
             mailinput.value="";
+            count++;
+            document.getElementById("showpopup").innerHTML=`You are traveling with ${count} co-passengers`;
     });
+    
     const closetag=document.getElementById("toggleit");
     closetag.addEventListener('click',function(){
         const popup = document.getElementById("popup");
@@ -50,4 +51,3 @@ function checkit() {
         maintag.style.display="block";
         document.getElementById("body").style.backgroundColor="white";
     });
-}
