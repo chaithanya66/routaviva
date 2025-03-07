@@ -1,14 +1,26 @@
+document.getElementById("button-start").addEventListener('click',function(){
+    let textfeild_end = document.getElementById("input-10");
+    let textfeild_start = document.getElementById("input-101");
+    
+    if (textfeild_start.value === "") {
+        textfeild_start.placeholder = "starting point is required";
+    }
+    if (textfeild_end.value === "") {
+        textfeild_end.placeholder = "Destination is required";
+    }
+    if (textfeild_start.value !== "" && textfeild_end.value !== "") {
+        document.getElementsByClassName("cont")[0].style.display = "inline-block";
+        document.getElementById("button-start").style.display = "none";
+    }
+    console.log(textfeild_start.value);
+    console.log(textfeild_end.value);
+});
 function checkit() {
-    let textfeild = document.getElementById("input-10");
     let datefeild_1 = document.getElementById("input-11");
     let datefeild_2 = document.getElementById("input-12");
-    console.log(textfeild.value);
     console.log(datefeild_1.value);
     console.log(datefeild_2.value);
 
-    if (textfeild.value === "") {
-        textfeild.placeholder = "Destination is required";
-    }
     if (datefeild_1.value === "") {
         console.log("Enter the Start date to proceed");
     }
@@ -33,12 +45,17 @@ const submitbutton=document.getElementById("button-01");
         submitbutton.addEventListener('click',function(){
             const inputs=mailinput.value;
             const newtext=document.createElement("div");
-            newtext.textContent=inputs;
+            newtext.textContent=inputs;  
             newtext.style.color="white";
             show.appendChild(newtext);
             console.log(inputs);
-            newtext.style.marginBottom="20px";
+            newtext.style.marginBottom="10px";
             newtext.style.fontSize="15px";
+            newtext.style.backgroundColor="#09090B"
+            newtext.style.height="20px";
+            newtext.style.padding="5px";
+            newtext.style.display="inline-block";
+            newtext.style.textAlign="center";
             mailinput.value="";
             count++;
             document.getElementById("showpopup").innerHTML=`You are traveling with ${count} co-passengers`;

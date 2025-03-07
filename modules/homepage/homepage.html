@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home page</title>
     <link rel="stylesheet" href="homepage.css">
 </head>
 <body id="body">
@@ -41,20 +41,30 @@
     <main id="maintag">
         <h3 id="displaytext">You have not yet created any Trip</h3>
 
-        <div class="cont">
-            <div class="container">
 
-                <div class="input-fields">
+
+        <div class="cont-1">
+            <div class="container-1">
+                <div class="input-fields-1">
+                    <input type="text" name="" placeholder="Enter Starting Destination" class="input-4" id="input-101">
                     <input type="text" name="" placeholder="Enter the Destination" class="input-1" id="input-10">
                 </div>
+                <button onclick="checkitstart()" id="button-start">Submit</button>
+            </div>
+        </div><br>
+        <div class="cont">
+            <div class="container">
     
                 <div class="input-fields">
-                    <input type="date" placeholder="when" class="input-2" id="input-11">
-                    <input type="date" placeholder="when" class="input-3" id="input-12">
+                    <input type="text" placeholder="Start data" class="input-2" id="input-11" onfocus="(this.type='date')">
+                    <input type="text" placeholder="End date" class="input-3" id="input-12" onfocus="(this.type='date')">
                 </div>
                 <button onclick="checkit()" id="button">Submit</button>
             </div>
         </div><br>
+
+
+
         <!-- <a href=""><img src="../../assets/images/icons8-arrow-64.png" alt="Select Trips"></a> --> 
          <div class="cont-2">
             <div class="container-2">

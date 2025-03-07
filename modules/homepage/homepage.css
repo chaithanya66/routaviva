@@ -82,11 +82,50 @@
     margin: 30vh auto;
     text-align: center;
 }
-.cont{
+.cont-1{
     display: inline-block;
     justify-content: center;
     align-items: center;
     padding: 10px;
+    box-shadow: 2px 2px 5px black;
+    background-color: #18181B;
+    border-radius: 20px;
+    text-align: center;
+}
+.container-1{
+    display: flex;
+    flex-wrap: wrap;
+}
+.input-fields-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #18181B;
+    padding: 10px;
+    margin-left: 0px;
+}
+.input-1,.input-4{
+    background-color: #18181B;
+    border: none;
+    outline: 0;
+    color: white;
+    margin-left: 20px
+}
+.container-1 button{
+    display: block;
+    background-color: #BEF264;
+    width: 110px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 0;
+}
+.cont{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+    box-shadow: 2px 2px 5px black;
     background-color: #18181B;
     border-radius: 20px;
     text-align: center;
@@ -101,9 +140,9 @@
     align-items: center;
     background-color: #18181B;
     padding: 10px;
-    margin-left: 20px;
+    margin-left: 0px;
 }
-.input-1,.input-2,.input-3{
+.input-2,.input-3{
     background-color: #18181B;
     border: none;
     outline: 0;
@@ -128,7 +167,7 @@
 }
 .container-2{
     display: flex;
-    height: 60px;
+    height: 55px;
     justify-content: space-between;
     align-items: center;
 }
@@ -152,9 +191,9 @@
     width:300px;
     margin: 20vh auto;
     display: flex;
-    background-color: #085f57;
+    background-color: #292929;
     text-align: center;
-    box-shadow: 5px 5px 10px #000000;
+    box-shadow: 5px 5px 10px #09090B;
     padding: 20px;
     display: none;    /* Initially hidden */
 }
@@ -168,6 +207,8 @@
     padding: 8px 20px;
     border-radius: 10px;
     border: 1px solid #564e4e;
+    color: white;
+    background: none;
     box-shadow: 5px 5px 10px #000000;
 }
 #button-01{
@@ -186,6 +227,6 @@
     height: 30px;
     display: flex;
     width: 30px;
-    border: 1px solid #000000;
+    border: 2px solid #09090B;
     cursor: pointer;
 }
