@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="homepage.css">
 </head>
 <body id="body">
-
-
+<!--Navigation Bar-->
     <nav class="navbar">
         <ul>
             <li><a href="">logo</a></li>
@@ -16,7 +15,7 @@
                 <li><a href="" id="dashboard">Dashboard</a></li>
                 <li><a href="">YourTrips</a></li>              
             </span>
-            <li class="hoverit"><img src="../../assets/images/icons8-setting-50.png">
+            <li class="hoverit"><img src="../../assets\icons\icons_settings24.svg">
                 <ul class="dropdown">
                     <!--  <li><a href="../signin/signin.html">Sign in</a></li>
                     <li><a href="../signup/signup.html">Sign up</a></li>  -->
@@ -26,28 +25,31 @@
         </ul>
     </nav>
 
-
-
+<!--pop up-->
     <div id="popup" class="popup">
-        <button id="toggleit">&times;</button>
+        <div class="croos">
+            <span>Enter the mail id's:</span><button id="toggleit"><img src="../../assets/icons/icons8-close.svg" alt=""></button>
+        </div>
+        <hr>
         <div id="inputs">
             <div id="textfeild"></div>
-            <input type="mail" placeholder="Enter the mail of colleagues" id="mailid-01"><br>
-            <button id="button-01"><img src="../../assets/images/addbut.png" alt=""></button>
+            <div class="popupcont">
+                <input type="mail" placeholder="Enter the mail of colleagues" id="mailid-01"><br>
+                <button id="button-01"><aside>Submit</aside><img src="../../assets/images/icons8-add-24.png" alt=""></button>
+            </div>
+            
         </div>
     </div>
 
-
+<!--Main content if not trip created-->
     <main id="maintag">
-        <h3 id="displaytext">You have not yet created any Trip</h3>
-
-
+        <h3 id="displaytext">Start by creating a trip</h3>
 
         <div class="cont-1">
             <div class="container-1">
                 <div class="input-fields-1">
-                    <input type="text" name="" placeholder="Enter Starting Destination" class="input-4" id="input-101">
-                    <input type="text" name="" placeholder="Enter the Destination" class="input-1" id="input-10">
+                    <input type="text" name="" placeholder="Enter Start Destination" class="input-4" id="input-101">
+                    <input type="text" name="" placeholder="Enter End Destination" class="input-1" id="input-10">
                 </div>
                 <button onclick="checkitstart()" id="button-start">Submit</button>
             </div>
@@ -59,7 +61,7 @@
                     <input type="text" placeholder="Start data" class="input-2" id="input-11" onfocus="(this.type='date')">
                     <input type="text" placeholder="End date" class="input-3" id="input-12" onfocus="(this.type='date')">
                 </div>
-                <button onclick="checkit()" id="button">Submit</button>
+                <button id="button">Submit</button>
             </div>
         </div><br>
 
@@ -76,6 +78,6 @@
     </main>
 
 
-    <script src="homepage.js"></script>
+    <script src="homepage.js" defer type="module"></script>
 </body>
 </html>

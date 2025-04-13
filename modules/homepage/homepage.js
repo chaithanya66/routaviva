@@ -1,3 +1,45 @@
+import {homepage_url} from "../../constants/constants.js";
+
+let user_id_export=localStorage.getItem("user_id");
+console.log(user_id_export);
+
+/***   
+fetch("https://rutavivaunsecured-1.onrender.com/homePage/",{
+    headers:{
+        'uid': user_id_export
+    }
+})
+.then(res=>res.json())
+.then(reslt=>console.log(reslt))
+if(res.data.trips==0){
+    window.location.href='../../animation.html';
+}; 
+***/
+
+// Api to fetch where trips are created are not
+async function fetchdetails(user_id_export) {
+    try {
+        const response=await fetch(homepage_url,{
+            headers: {
+                'uid':user_id_export
+            }
+        });
+        if(!response.ok){
+            throw new Error(`fetching error: ${response.status}`);
+        }
+        const res=await response.json();
+        console.log(res);
+        if(res.data && Array.isArray(res.data.trips) && res.data.trips.length !== 0){
+            window.location.href="../../animation.html";
+        }
+    } 
+    catch (error) {
+        console.error("error while fetching");
+    }
+}
+fetchdetails(user_id_export);
+
+
 document.getElementById("button-start").addEventListener('click',function(){
     let textfeild_end = document.getElementById("input-10");
     let textfeild_start = document.getElementById("input-101");
@@ -15,7 +57,7 @@ document.getElementById("button-start").addEventListener('click',function(){
     console.log(textfeild_start.value);
     console.log(textfeild_end.value);
 });
-function checkit() {
+document.getElementById("button").addEventListener('click',function(){
     let datefeild_1 = document.getElementById("input-11");
     let datefeild_2 = document.getElementById("input-12");
     console.log(datefeild_1.value);
@@ -31,36 +73,45 @@ function checkit() {
         document.getElementById("button").style.display = "none";
         document.getElementsByClassName("cont-2")[0].style.display = "inline-block";
     }
-}
+});
 
 document.getElementById("showpopup").addEventListener('click',function(){
     document.getElementById("popup").style.display="block";
     document.getElementById("maintag").style.display="none";
+    document.getElementById("body").style.backgroundColor="grey";
 });
+let collaboratorsList = [];
+
 
 const submitbutton=document.getElementById("button-01");
         const show=document.getElementById("textfeild");
         const mailinput=document.getElementById("mailid-01");
         let count=0;
-        submitbutton.addEventListener('click',function(){
-            const inputs=mailinput.value;
-            const newtext=document.createElement("div");
-            newtext.textContent=inputs;  
-            newtext.style.color="white";
-            show.appendChild(newtext);
-            console.log(inputs);
-            newtext.style.marginBottom="10px";
-            newtext.style.fontSize="15px";
-            newtext.style.backgroundColor="#09090B"
-            newtext.style.height="20px";
-            newtext.style.padding="5px";
-            newtext.style.display="inline-block";
-            newtext.style.textAlign="center";
-            mailinput.value="";
-            count++;
-            document.getElementById("showpopup").innerHTML=`You are traveling with ${count} co-passengers`;
-    });
-    
+
+        submitbutton.addEventListener('click', function () {
+            const collaborator = mailinput.value;
+            if (collaborator.trim() !== "") {
+                collaboratorsList.push(collaborator); // Store it globally
+                const newtext = document.createElement("div");
+                newtext.textContent = collaborator;
+                newtext.style.color = "white";
+                newtext.style.marginBottom = "10px";
+                newtext.style.fontSize = "15px";
+                newtext.style.borderRadius = "10px";
+                newtext.style.backgroundColor = "hsla(0, 0%, 0%, 0.6)";
+                newtext.style.height = "20px";
+                newtext.style.marginRight = "10px";
+                newtext.style.padding = "15px";
+                newtext.style.display = "inline-block";
+                newtext.style.textAlign = "center";
+                show.appendChild(newtext);
+        
+                mailinput.value = "";
+                count++;
+                document.getElementById("showpopup").innerHTML = `You are traveling with ${count} co-passengers`;
+            }
+        });
+  
     const closetag=document.getElementById("toggleit");
     closetag.addEventListener('click',function(){
         const popup = document.getElementById("popup");
@@ -68,3 +119,37 @@ const submitbutton=document.getElementById("button-01");
         maintag.style.display="block";
         document.getElementById("body").style.backgroundColor="white";
     });
+
+const postadetails=document.getElementById("button_02");
+postadetails.addEventListener('click',function(){
+    try {
+        const response= fetch('https://rutavivaunsecured-1.onrender.com/trip', {
+            method: 'POST',
+            headers: {
+              'uid': user_id_export, 
+              'Content-Type': 'application/json',
+              'X-API-Key': ''  
+            },
+            body: JSON.stringify({
+              tripName: document.getElementById("input-10").value,
+              fromDestination: document.getElementById("input-101").value,
+              toDestination: document.getElementById("input-10").value,
+              fromDate: document.getElementById("input-11").value,
+              toDate: document.getElementById("input-12").value,
+              enRouteStops: [
+                "Manali",
+                "Rishikesh"
+              ],
+              collaborators: collaboratorsList
+            })
+          });
+          console.log(response);
+          if(response.status===200){
+            window.location.href="../../index.html";
+          }
+
+    } catch (error) {
+        console.error(error);
+    }
+});
+    

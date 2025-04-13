@@ -1,4 +1,5 @@
 import {post} from "../../api/http-client.js";
+import {login_url}from "../../constants/constants.js"
 
 const form = document.querySelector('#form');
 const email = document.querySelector('#email-input');
@@ -63,14 +64,15 @@ const validateEmail = (email) => {
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const button = document.getElementById('button-input'); // Correctly reference the button
+    const button = document.getElementById('button-input'); 
     button.classList.add('loading');
     button.disabled = true;
 
-    if (validateInputs()) { // Ensure inputs are validated before registration
+    if (validateInputs()) { 
         await registerUser();
     } 
 });
+
 
 export async function registerUser() {
     console.log("Inside register user");
@@ -93,10 +95,18 @@ export async function registerUser() {
     button.classList.add('loading');
     button.disabled = true;
     try {
-        const response = await post("https://rutavivaunsecured.onrender.com/login", body);
+        const response = await post(login_url, body);
         console.log("Response is ", response)
         if (response.code === 200) {
             console.log("Registration successful:", response);
+
+            const user_id=response["data"]["user_id"];
+            console.log(user_id);
+            let value=user_id;
+            localStorage.setItem("user_id",user_id);
+            let stored_user=localStorage.getItem("user_id");
+            console.log(stored_user);
+
             window.location.href = '../homepage/homepage.html';
         }
         else if(response && response.code === 400){

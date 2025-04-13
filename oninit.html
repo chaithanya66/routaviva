@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function createTrip() {
+    try {
+        const response = await fetch('https://rutavivaunsecured-1.onrender.com/trip', {
+            method: 'POST',
+            headers: {
+                'uid': 'b86a4fc6-15fe-4891-a54e-9a0aa5edeb43',
+                'Content-Type': 'application/json',
+                'X-API-Key': '' // Make sure to put a valid API key here if required
+            },
+            body: JSON.stringify({
+                tripName: "munnar",
+                fromDestination: "tpt",
+                toDestination: "munnar",
+                fromDate: "10-10-2025",
+                toDate: "20-10-2025",
+                enRouteStops: [
+                    "Manali",
+                    "Rishikesh"
+                ],
+                collaborators: ["chinnu1@gmail.com","chaithu"] // changed to array
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        }
+
+        const data = await response.json();
+        console.log('Trip created successfully:', data);
+    } catch (error) {
+        console.error('Error creating trip:', error);
+    }
+}
+
+createTrip();
+    </script>
+</body>
+</html>

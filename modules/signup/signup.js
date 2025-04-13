@@ -1,4 +1,5 @@
 import {post} from "../../api/http-client.js";
+import {register_url}from "../../constants/constants.js"
 
 const form = document.querySelector('#form');
 const username = document.querySelector('#name-input');
@@ -112,10 +113,26 @@ export async function registerUser() {
     button.classList.add('loading');
     button.disabled = true;
     try {
-        const response = await post("https://rutavivaunsecured.onrender.com/register", body);
+        const response = await post(register_url, body);
         console.log("Response is ", response)
         if (response.code === 200) {
             console.log("Registration successful:", response);
+
+            /*** const user_id=response["data"]["user_id"];
+            console.log(user_id);
+            let key="user";
+            let value=user_id;
+            localStorage.setItem(key,value);
+            let stored_user=localStorage.getItem(key);
+            console.log(stored_user); ***/
+
+            const user_id=response["data"]["user_id"];
+            console.log(user_id);
+            let value=user_id;
+            localStorage.setItem("user_id",user_id);
+            let stored_user=localStorage.getItem("user_id");
+            console.log(stored_user);
+
             window.location.href = '../homepage/homepage.html';
         } else {
             console.error(`Error: ${response.status} - ${response.statusText}`);
