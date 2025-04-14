@@ -3,19 +3,6 @@ import {homepage_url} from "../../constants/constants.js";
 let user_id_export=localStorage.getItem("user_id");
 console.log(user_id_export);
 
-/***   
-fetch("https://rutavivaunsecured-1.onrender.com/homePage/",{
-    headers:{
-        'uid': user_id_export
-    }
-})
-.then(res=>res.json())
-.then(reslt=>console.log(reslt))
-if(res.data.trips==0){
-    window.location.href='../../animation.html';
-}; 
-***/
-
 // Api to fetch where trips are created are not
 async function fetchdetails(user_id_export) {
     try {
@@ -81,7 +68,6 @@ document.getElementById("showpopup").addEventListener('click',function(){
     document.getElementById("body").style.backgroundColor="grey";
 });
 let collaboratorsList = [];
-
 
 const submitbutton=document.getElementById("button-01");
         const show=document.getElementById("textfeild");
