@@ -62,6 +62,14 @@ document.getElementById("button").addEventListener('click',function(){
     }
 });
 
+const enroutedis = document.getElementById("button_02");
+const enrouteElement = document.getElementsByClassName("enroute")[0];
+enroutedis.addEventListener('click', function() {
+    document.getElementById("button_02").style.display="none";
+    enrouteElement.style.display = "inline-block";
+});
+
+//collabrators popup
 document.getElementById("showpopup").addEventListener('click',function(){
     document.getElementById("popup").style.display="block";
     document.getElementById("maintag").style.display="none";
@@ -91,7 +99,7 @@ const submitbutton=document.getElementById("button-01");
                 newtext.style.display = "inline-block";
                 newtext.style.textAlign = "center";
                 show.appendChild(newtext);
-        
+
                 mailinput.value = "";
                 count++;
                 document.getElementById("showpopup").innerHTML = `You are traveling with ${count} co-passengers`;
@@ -104,9 +112,54 @@ const submitbutton=document.getElementById("button-01");
         popup.style.display="none";
         maintag.style.display="block";
         document.getElementById("body").style.backgroundColor="white";
-    });
+});
 
-const postadetails=document.getElementById("button_02");
+// enroute popup
+document.getElementById("enroutepop").addEventListener('click',function(){
+    document.getElementById("popup-2").style.display="block";
+    document.getElementById("maintag").style.display="none";
+    document.getElementById("body").style.backgroundColor="grey";
+});
+let enroutelist = [];
+
+const submitbutton1=document.getElementById("button-011");
+        const show1=document.getElementById("textfeild1");
+        const textinput=document.getElementById("text-1");
+        let countit=0;
+
+        submitbutton1.addEventListener('click', function () {
+            const enroutestop = textinput.value;
+            if (enroutestop.trim() !== "") {
+                enroutelist.push(enroutestop); // Store it globally
+                const newtext = document.createElement("div");
+                newtext.textContent = enroutestop;
+                newtext.style.color = "white";
+                newtext.style.marginBottom = "10px";
+                newtext.style.fontSize = "15px";
+                newtext.style.borderRadius = "10px";
+                newtext.style.backgroundColor = "hsla(0, 0%, 0%, 0.6)";
+                newtext.style.height = "20px";
+                newtext.style.marginRight = "10px";
+                newtext.style.padding = "15px";
+                newtext.style.display = "inline-block";
+                newtext.style.textAlign = "center";
+                show1.appendChild(newtext);
+        
+                textinput.value = "";
+                countit++;
+                document.getElementById("enroutepop").innerHTML = `You are interested in ${countit} enroute stops`;
+            }
+        });
+  
+    const closetag1=document.getElementById("toggleit1");
+    closetag1.addEventListener('click',function(){
+        const popupit = document.getElementById("popup-2");
+        popupit.style.display="none";
+        maintag.style.display="block";
+        document.getElementById("body").style.backgroundColor="white";
+});
+
+const postadetails=document.getElementById("enroute-butt");
 postadetails.addEventListener('click',function(){
     try {
         const response= fetch('https://rutavivaunsecured-1.onrender.com/trip', {
@@ -122,10 +175,7 @@ postadetails.addEventListener('click',function(){
               toDestination: document.getElementById("input-10").value,
               fromDate: document.getElementById("input-11").value,
               toDate: document.getElementById("input-12").value,
-              enRouteStops: [
-                "Manali",
-                "Rishikesh"
-              ],
+              enRouteStops: enroutelist,
               collaborators: collaboratorsList
             })
           });

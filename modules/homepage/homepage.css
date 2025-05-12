@@ -191,6 +191,7 @@
     color: #ddd5d1;
 }
 #button_02{
+    display: block;
     height: 40px;
     width: 110px;
     border-radius: 10px;
@@ -268,6 +269,109 @@
     border: none;
     cursor: pointer;
 }
+
+.enroute{
+    display: none;
+    background-color: #18181B;
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 600px;
+    box-shadow: 5px 5px 10px black;
+}
+.enroute-cont{
+    display: flex;
+    height: 55px;
+    justify-content: space-between;
+    align-items: center;
+}
+#enroutepop{
+    background: none;
+    border: none;
+    margin-left: 30px;
+    font-size: 15px;
+    color: #ddd5d1;
+}
+#enroute-butt{
+    height: 40px;
+    width: 110px;
+    border-radius: 10px;
+    margin-right: 10px;
+    background-color: #BEF264;
+    border: none;
+}
+
+.popup-2 {
+    height: auto;
+    width:450px;
+    margin: 20vh auto;
+    border-radius: 10px;
+    border: 2px solid rgb(222, 217, 217);
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.734);
+    text-align: center;
+    box-shadow: 5px 5px 10px rgb(61, 61, 61);
+    padding: 20px;
+    display: none;   /* Initially hidden */
+}
+
+.popup-2 #inputs1{
+    text-align: center;
+    margin: 8vh auto;
+}
+#text-1{
+    outline: none;
+    height: 30px;
+    width: 270px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    background: none;
+}
+#text-1::placeholder{
+    color: white;
+}
+.popupcont1{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    border-radius: 10px;
+}
+#button-011{
+    padding: 10px 30px;
+    border-radius: 10px;
+    margin: 5px;
+    display: flex;
+    cursor: pointer;
+    border: 2px solid #000000;
+    background: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    mix-blend-mode: lighten;
+    font-size: 17px;
+}
+#button-011 img{
+    margin-left: 10px;
+}
+.croos1{
+    display: flex;
+    justify-content: space-between;
+}
+.popup-2 span{
+    color: white;
+}
+#toggleit1{
+    background:none;
+    font-size: 25px;
+    display: flex;
+    border: none;
+    cursor: pointer;
+}
+
+
 
 @media (max-width: 600px){
     .navbar,main{
