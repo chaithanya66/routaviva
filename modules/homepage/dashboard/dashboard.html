@@ -1,59 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=hourglass_empty" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <style>
+        #map {
+            height: 360px;
+            width: 345px;
+            border-radius: 16px;
+        }
+    </style>
+
+    <script src="dashboard.js" defer type="module"></script>
+
     <link rel="stylesheet" href="dashboard.css">
 </head>
+
 <body>
     <nav class="navbar">
         <ul>
-            <li><a href="">logo</a></li>
+            <li><img class="logoimg"
+                    src="../../../assets/images/WhatsApp_Image_2025-04-15_at_21.22.04_df1bfcaf-removebg-preview.png"
+                    alt="logo"></li>
             <span>
                 <li><a href="" id="dashboard">Dashboard</a></li>
-                <li><a href="">YourTrips</a></li>              
+                <li><a href="../newTrip/newtrip.html">YourTrips</a></li>
             </span>
-            <li class="hoverit"><img src="../../../assets/icons/icons_settings24.svg">
+            <li class="hoverit"><img src="../../../assets/icons/icons_settings24.svg" alt="*">
                 <ul class="dropdown">
                     <!--  <li><a href="../signin/signin.html">Sign in</a></li>
                     <li><a href="../signup/signup.html">Sign up</a></li>  -->
-                    <li><a href="../signin/signin.html">Log Out</a></li>
+                    <li><a href="../../signin/signin.html">Log Out</a></li>
                 </ul>
             </li>
         </ul>
     </nav>
 
+    <div id="popup-2" class="popup-2">
+        <div class="croos1">
+            <span>Enter the Bike mileage:</span><button id="toggleit1"><img src="../../../assets/icons/icons8-close.svg"
+                    alt=""></button>
+        </div>
+        <hr>
+        <div id="inputs1">
+            <div id="textfeild1">
+                <input type="text" id="bikename" placeholder="Enter BikeName">
+            </div>
+            <div class="popupcont1">
+                <input type="text" placeholder="Enter the Bike mileage" id="text-1"><br>
+                <button id="button-011">
+                    <aside>Submit</aside><img src="../../../assets/images/icons8-add-24.png" alt="">
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div class="dashboardtemp">
 
         <section class="sct1">
+            <div class="head">
+                <h1>Your Trip</h1>
+                <select id="select-places">
+                </select>
+            </div>
+
+            <div class="main1">
+                <h2>Hey Budy!</h2>
+                <h2 id="heading">Welcome To Your Nepal Adventure!</h2>
+            </div>
 
         </section>
 
         <section class="sct2">
 
+            <div class="head1">
+                <h1 class="head1-1"><i class="fa fa-pie-chart" class="budg-icon"></i><span>BUDGET</span></h1>
+            </div>
+
+            <div class="chart" id="piechartdis">
+                <canvas id="piechart" height="50" width="50"></canvas>
+            </div>
+
+            <div id="hideorun">
+                <div class="tripbudget">
+
+                    <button id="add-budg"><img src="../../../assets/images/icons8-add-24.png" alt="">Add Budget</button>
+
+                    <div class="display-budget">
+                        <div class="total-bdg">
+                            <label for="total-bdg-val">Total budget</label>
+                            <input type="text" name="total-bdg-val" min="1" value="1500" max="100000"
+                                id="total-bdg-val">
+                        </div>
+
+                        <div class="activity-bdg">
+                            <label for="activity-bdg-val">Activities</label>
+                            <input type="text" name="activity-bdg-val" min="1" value="500" max="500000"
+                                id="activity-bdg-val">
+                        </div>
+
+                        <div class="stay-bdg">
+                            <label for="stay-bdg-val">Stay</label>
+                            <input type="text" name="stay-bdg-val" min="1" value="500" max="500000" id="stay-bdg-val">
+                        </div>
+
+                        <div class="food-bdg">
+                            <label for="food-bdg-val">Food</label>
+                            <input type="text" name="food-bdg-val" min="1" value="500" max="500000" id="food-bdg-val">
+                        </div>
+
+                        <button id="create-bdg"><img src="../../../assets/images/icons8-add-24.png"
+                                alt="">Create</button>
+
+                    </div>
+
+                </div>
+            </div>
+
+
         </section>
 
         <section class="sct3">
-            
+            <div class="head2">
+                <h1 class="exp-heading">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                    <div class="exp-header">EXPENSES</div>
+                </h1>
+            </div>
+            <div id="disp-exp-val" class="expenses-container"></div>
+
+            <div class="main3">
+                <button id="addexpnew"><img src="../../../assets/images/icons8-add-24.png" alt="+"> Record</button>
+
+                <div id="expenses-popup" class="expenses-popup">
+                    <div class="exp-content">
+                        <select name="expenses" id="exp-select">
+                            <option value="">Select</option>
+                            <option value="">Food</option>
+                            <option value="">Stay</option>
+                            <option value="">Activities</option>
+                            <option value="">Petrol</option>
+                        </select>
+
+                        <!-- <input type="text" name="" id="exp-cost"> -->
+                    </div>
+                    <button id="addexpenses"><img src="../../../assets/images/icons8-add-24.png" alt="+">Record</button>
+                </div>
+
+            </div>
+            <button id="addexpapi"><img src="../../../assets/images/icons8-add-24.png" alt="+"> Record</button>
         </section>
 
         <section class="sct4">
+
+            <div class="head3">
+                <span class="material-symbols-outlined">hourglass_empty</span>
+                READINESS
+            </div>
+
+            <div class="progress-container">
+                <svg width="160" height="160">
+                    <defs>
+                        <linearGradient id="fadeGradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#004d25" stop-opacity="1" />
+                            <stop offset="100%" stop-color="#004d25" stop-opacity="0.2" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Background circle with gradient -->
+                    <circle class="bg" cx="80" cy="80" r="70" stroke-width="20" fill="none" />
+                    <!-- Foreground progress arc -->
+                    <circle class="progress" cx="80" cy="80" r="70" stroke-width="20" fill="none" stroke-dasharray="440"
+                        stroke-dashoffset="440" />
+                </svg>
+                <div class="main4">
+                    <div id="dayleft">Days left</div>
+                    <div id="days-left"></div>
+                </div>
+            </div>
 
         </section>
 
         <section class="sct5">
 
+            <div id="map"></div>
+
         </section>
 
         <section class="sct6">
+            <div class="head5">
+                <img src="../../../assets/images/icons8-location-64.png" alt="#">
+                <h1 id="citynamehtml"></h1>
+            </div>
 
+            <div class="main6">
+                <div class="temperature">
+                    <div class="temppara">Temperature</div>
+
+                    <div class="tempvalue"></div>
+                </div>
+                <div class="weather">
+                    <div class="weatherpara">Weather</div>
+
+                    <div class="weatherval"></div>
+                </div>
+            </div>
         </section>
 
         <section class="sct7">
-            
+            <div class="fuelcontainer">
+                <div id="mileagehead">
+                    Add Bike Mileage
+                </div>
+                <div class="fuel-cal">
+                    <button id="fueladd">Add</button>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="sct8">
+
+        </section>
+
+        <section class="sct9">
+
         </section>
 
     </div>
+
+    <div class="mapdisra">
+        <input type="text" id="from" placeholder="From (lat,lng)" value="28.18369,76.8197" hidden/>
+        <input type="text" id="to" placeholder="To (lat,lng)" value="28.19143,76.81418" hidden/>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="https://unpkg.com/@mapbox/polyline"></script>
+
 </body>
+
 </html>

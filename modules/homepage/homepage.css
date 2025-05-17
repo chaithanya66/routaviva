@@ -42,6 +42,10 @@
     top:0;
     transition: background-color 0.5s ease-in-out;
 }
+.navbar .logoimg{
+    width: 50px;
+    height: 50px;
+} 
 .navbar ul span li{
     margin-right: 50px;
 }
@@ -169,6 +173,26 @@
     border-radius: 10px;
     border: 0;
 }
+.resultbox{
+    color: white;
+    max-width: 500px;
+    padding-left: 0;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+.resultbox::-webkit-scrollbar{
+    background: transparent;
+}
+.resultbox ul li{
+    list-style: none;
+    padding: 15px 10px;
+    cursor: pointer;
+}
+.resultbox ul li:hover{
+    background: #2786fb;
+    border-radius: 5px;
+}
+
 
 .cont-2{
     display: none;
