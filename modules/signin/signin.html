@@ -4,22 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="signup.js" defer type="module"></script>
-    <link rel="stylesheet" href="signup.css">
+    <script src="signin.js" defer type="module"></script>
+    <link rel="stylesheet" href="signin.css">
 </head>
 <body>
     <div class="container">
         <form class="form" id="form" action="../homepage/homepage.html">
-            <h1>Register</h1>
+            <h1>Login</h1>
             <div class="next-page">
-                <p>Already have an account?</p>
-                <a href="../signin/signin.html">Sign in</a>
-            </div>
-    
-            <div class="input-type">
-                <label id="username">User Name:</label>
-                <input for="username" type="text" id="name-input">
-                <div class="error"></div>
+                <p>New Rutaviva</p>
+                <a href="../signup/signup.html">Sign up</a>
             </div>
 
             <div class="input-type">
@@ -33,12 +27,8 @@
                 <input for="password" type="password" id="password-input">
                 <div class="error"></div>
             </div>
+            <p id="textcontenterror"></p>
 
-            <div class="input-type">
-                <label id="confirm-password">Confirm Password:</label>
-                <input for="confirm-password" type="password" id="c-password-input">
-                <div class="error"></div>
-            </div>
 
             <button id="button-input" type="submit">Submit</button>
         </form>
@@ -52,8 +42,6 @@
             </div>
         </div>
     </main>
-
-    
 
 </body>
 </html>
