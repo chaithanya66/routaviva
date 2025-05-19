@@ -13,7 +13,10 @@
 
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=hourglass_empty" /> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=description" /> -->
     <style>
         #map {
             height: 360px;
@@ -58,7 +61,7 @@
                 <input type="text" id="bikename" placeholder="Enter BikeName">
             </div>
             <div class="popupcont1">
-                <input type="text" placeholder="Enter the Bike mileage" id="text-1"><br>
+                <input type="number" placeholder="Enter the Bike mileage" id="text-1"><br>
                 <button id="button-011">
                     <aside>Submit</aside><img src="../../../assets/images/icons8-add-24.png" alt="">
                 </button>
@@ -197,26 +200,33 @@
 
         </section>
 
-        <section class="sct6">
-            <div class="head5">
-                <img src="../../../assets/images/icons8-location-64.png" alt="#">
-                <h1 id="citynamehtml"></h1>
-            </div>
-
-            <div class="main6">
-                <div class="temperature">
-                    <div class="temppara">Temperature</div>
-
-                    <div class="tempvalue"></div>
+        <div class="minigrid">
+            <section class="sct6">
+                <div class="head5">
+                    <img src="../../../assets/images/icons8-location-64.png" alt="#">
+                    <h1 id="citynamehtml"></h1>
                 </div>
-                <div class="weather">
-                    <div class="weatherpara">Weather</div>
 
-                    <div class="weatherval"></div>
+                <div class="main6">
+                    <div class="temperature">
+                        <div class="temppara">Temperature</div>
+
+                        <div class="tempvalue"></div>
+                    </div>
+                    <div class="weather">
+                        <div class="weatherpara">Weather</div>
+
+                        <div class="weatherval"></div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
+            <section class="sct9">
+                <div id="enrote-stop-heading">
+                    Enroute Stops
+                </div>
+            </section>
+        </div>
         <section class="sct7">
             <div class="fuelcontainer">
                 <div id="mileagehead">
@@ -230,18 +240,18 @@
         </section>
 
         <section class="sct8">
-
+            <div id="activity-list-heading">
+                <span class="material-symbols-outlined">description</span>
+                Activities List
+            </div>
         </section>
 
-        <section class="sct9">
-
-        </section>
 
     </div>
 
     <div class="mapdisra">
-        <input type="text" id="from" placeholder="From (lat,lng)" value="28.18369,76.8197" hidden/>
-        <input type="text" id="to" placeholder="To (lat,lng)" value="28.19143,76.81418" hidden/>
+        <input type="text" id="from" placeholder="From (lat,lng)" value="28.18369,76.8197" hidden />
+        <input type="text" id="to" placeholder="To (lat,lng)" value="28.19143,76.81418" hidden />
     </div>
 
 

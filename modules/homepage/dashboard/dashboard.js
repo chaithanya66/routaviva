@@ -5,26 +5,14 @@ console.log("user Id: ", user_id_export);
 
 document.querySelector(".mapdisra").style.display = "none";
 
-let width = window.screen.availWidth;
-if (width <= 550) {
-    let elements = document.getElementsByClassName("sct9");
-    if (elements.length > 0) {
-        if (elements && elements[0]) {
-            elements[0].style.transform = "translate(0px,0px)";
-        }
-    }
-}
-if (width <= 1100) {
-    let elements = document.getElementsByClassName("sct9");
-    if (elements.length > 0) {
-        elements[0].style.transform = "translate(0px,0px)";
-    }
-}
 let selectedTripId = null;
 let selectedPlaceName = null;
 let tripData = [];
 
 let piechart;
+
+const expapi = document.getElementById("addexpapi");
+
 
 export async function tripstoinsert(user_id_export) {
     try {
@@ -101,6 +89,9 @@ function displayplaces(trips, user_id_export) {
                     if (tag === 'total') totalbudgarr = Number(item.maxBudget);
                     if (tag === 'spent') spentbudgarr = Number(item.maxBudget);
                 });
+                if(totalbudgarr<spentbudgarr){
+                    totalbudgarr=0;
+                }
 
                 if (piechart && typeof piechart.destroy === 'function') {
                     piechart.destroy();
@@ -145,7 +136,6 @@ function displayplaces(trips, user_id_export) {
                     plugins: [ChartDataLabels]
                 });
 
-
                 if (data.data.expenses.length >= 4) {
                     // document.querySelector(".main3").style.display = "none";
                     console.log("okkk", data.data.expenses);
@@ -168,6 +158,7 @@ function displayplaces(trips, user_id_export) {
 
                         container.appendChild(entry);
                     });
+                    expapi.style.display="flex";
                 }
 
                 else {
@@ -475,7 +466,6 @@ function displayplaces(trips, user_id_export) {
 
 
         let expenseCount = 0;
-        const expapi = document.getElementById("addexpapi");
 
         expdisp.addEventListener('click', function () {
             if (currentInputTag && currentInputTag.value.trim() !== "") {
@@ -568,9 +558,12 @@ function displayplaces(trips, user_id_export) {
                     // Api 
 
                 }
-
             }
         });
+        expapi.addEventListener('click',function(){
+                    
+        });
+
 
         document.getElementById("heading").textContent = `Welcome To Your ${selectedPlaceName} Adventure!`;
 
