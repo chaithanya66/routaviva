@@ -113,6 +113,7 @@ export async function registerUser() {
             document.getElementById("textcontenterror").textContent='Password is incorrect';
             alert("password is incorrect")
         }
+        
          else {
             console.error(`Error: ${response.status} - ${response.statusText}`);
             alert("Registration failed. Please check your inputs or try again later.");

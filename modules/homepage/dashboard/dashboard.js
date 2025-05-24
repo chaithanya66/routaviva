@@ -89,8 +89,8 @@ function displayplaces(trips, user_id_export) {
                     if (tag === 'total') totalbudgarr = Number(item.maxBudget);
                     if (tag === 'spent') spentbudgarr = Number(item.maxBudget);
                 });
-                if(totalbudgarr<spentbudgarr){
-                    totalbudgarr=0;
+                if (totalbudgarr < spentbudgarr) {
+                    totalbudgarr = 0;
                 }
 
                 if (piechart && typeof piechart.destroy === 'function') {
@@ -158,7 +158,7 @@ function displayplaces(trips, user_id_export) {
 
                         container.appendChild(entry);
                     });
-                    expapi.style.display="flex";
+                    expapi.style.display = "none";
                 }
 
                 else {
@@ -175,6 +175,14 @@ function displayplaces(trips, user_id_export) {
                     document.querySelector(".tripbudget").style.display = "block";
                     // document.getElementsByClassName("display-budget").style.display = "block";
 
+                }
+                if (data.data.enRouteStops.length>0) {
+                    console.log(data.data.enRouteStops);
+                    data.data.enRouteStops.forEach(stops=>{
+                        console.log(stops);
+                        document.getElementById("enrote-stop-content").innerHTML = stops;
+
+                    })
                 }
 
                 // To display remaining days inn the trip
@@ -546,7 +554,7 @@ function displayplaces(trips, user_id_export) {
                 expenseCount++;
                 if (expenseCount === 4) {
                     exppopup.style.display = "none";
-                    expapi.style.display = "flex";
+                    expapi.style.display = "none";
 
                     const postData = [
                         { tag: "food", value: expenseValues.Food },
@@ -560,8 +568,8 @@ function displayplaces(trips, user_id_export) {
                 }
             }
         });
-        expapi.addEventListener('click',function(){
-                    
+        expapi.addEventListener('click', function () {
+
         });
 
 
