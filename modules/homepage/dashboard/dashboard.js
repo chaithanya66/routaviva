@@ -5,26 +5,14 @@ console.log("user Id: ", user_id_export);
 
 document.querySelector(".mapdisra").style.display = "none";
 
-let width = window.screen.availWidth;
-if (width <= 550) {
-    let elements = document.getElementsByClassName("sct9");
-    if (elements.length > 0) {
-        if (elements && elements[0]) {
-            elements[0].style.transform = "translate(0px,0px)";
-        }
-    }
-}
-if (width <= 1100) {
-    let elements = document.getElementsByClassName("sct9");
-    if (elements.length > 0) {
-        elements[0].style.transform = "translate(0px,0px)";
-    }
-}
 let selectedTripId = null;
 let selectedPlaceName = null;
 let tripData = [];
 
 let piechart;
+
+const expapi = document.getElementById("addexpapi");
+
 
 export async function tripstoinsert(user_id_export) {
     try {
@@ -101,6 +89,9 @@ function displayplaces(trips, user_id_export) {
                     if (tag === 'total') totalbudgarr = Number(item.maxBudget);
                     if (tag === 'spent') spentbudgarr = Number(item.maxBudget);
                 });
+                if (totalbudgarr < spentbudgarr) {
+                    totalbudgarr = 0;
+                }
 
                 if (piechart && typeof piechart.destroy === 'function') {
                     piechart.destroy();
@@ -145,7 +136,6 @@ function displayplaces(trips, user_id_export) {
                     plugins: [ChartDataLabels]
                 });
 
-
                 if (data.data.expenses.length >= 4) {
                     // document.querySelector(".main3").style.display = "none";
                     console.log("okkk", data.data.expenses);
@@ -168,6 +158,7 @@ function displayplaces(trips, user_id_export) {
 
                         container.appendChild(entry);
                     });
+                    expapi.style.display = "none";
                 }
 
                 else {
@@ -184,6 +175,14 @@ function displayplaces(trips, user_id_export) {
                     document.querySelector(".tripbudget").style.display = "block";
                     // document.getElementsByClassName("display-budget").style.display = "block";
 
+                }
+                if (data.data.enRouteStops.length>0) {
+                    console.log(data.data.enRouteStops);
+                    data.data.enRouteStops.forEach(stops=>{
+                        console.log(stops);
+                        document.getElementById("enrote-stop-content").innerHTML = stops;
+
+                    })
                 }
 
                 // To display remaining days inn the trip
@@ -224,6 +223,8 @@ function displayplaces(trips, user_id_export) {
                 }
                 remainingdays(enddate, startdate);
 
+
+                
 
                 let fromdestination = data.data.fromDestination;
                 let todestination = data.data.toDestination;
@@ -475,7 +476,6 @@ function displayplaces(trips, user_id_export) {
 
 
         let expenseCount = 0;
-        const expapi = document.getElementById("addexpapi");
 
         expdisp.addEventListener('click', function () {
             if (currentInputTag && currentInputTag.value.trim() !== "") {
@@ -556,7 +556,7 @@ function displayplaces(trips, user_id_export) {
                 expenseCount++;
                 if (expenseCount === 4) {
                     exppopup.style.display = "none";
-                    expapi.style.display = "flex";
+                    expapi.style.display = "none";
 
                     const postData = [
                         { tag: "food", value: expenseValues.Food },
@@ -568,9 +568,12 @@ function displayplaces(trips, user_id_export) {
                     // Api 
 
                 }
-
             }
         });
+        expapi.addEventListener('click', function () {
+
+        });
+
 
         document.getElementById("heading").textContent = `Welcome To Your ${selectedPlaceName} Adventure!`;
 

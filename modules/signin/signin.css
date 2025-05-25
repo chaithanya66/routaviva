@@ -199,6 +199,9 @@ body{
         width: 100%;
         margin-bottom: 20px;
     }
+    body{
+        overflow-y: hidden;
+    }
 }
 
 input-type .error input{
