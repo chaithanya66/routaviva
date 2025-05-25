@@ -224,6 +224,8 @@ function displayplaces(trips, user_id_export) {
                 remainingdays(enddate, startdate);
 
 
+                
+
                 let fromdestination = data.data.fromDestination;
                 let todestination = data.data.toDestination;
                 console.log(fromdestination);
